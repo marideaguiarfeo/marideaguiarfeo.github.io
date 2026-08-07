@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mari de Aguiar Féo, Astrophysics &amp; Studio Art</title>
+<meta name="description" content="Personal site of Mariana (Mari) de Aguiar Féo, Physics &amp; Studio Art, Carleton College. Research, outreach, and art.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     DESIGN TOKENS. Change these to re-theme the whole site
+     ============================================================ */
+  :root {
+    /* --- Color palette: soft twilight, paper, and gouache gold --- */
+    --paper:        #F5F1F7;   /* soft lilac-white page background */
+    --paper-warm:   #F8F3ED;   /* warmer paper for alternating bands */
+    --ink:          #262042;   /* deep indigo-plum, primary text */
+    --ink-soft:     #55506F;   /* muted plum-gray, secondary text */
+    --violet:       #6C5B8C;   /* dusty twilight violet, primary accent */
+    --violet-deep:  #453B63;   /* deeper violet, hover states */
+    --gold:         #C9962F;   /* gouache gold, art / warm accent */
+    --sky:          #7C9BC4;   /* soft observatory blue, secondary accent */
+    --line:         #DED6E8;   /* hairline dividers */
+    --card:         #FFFFFF;   /* card surfaces */
+    --card-border:  #E7E0EF;
+
+    /* --- Typography --- */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+    /* --- Layout --- */
+    --max-w: 1080px;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  @media (prefers-color-scheme: no-preference) {}
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; color: var(--ink); font-weight: 500; }
+  p { margin: 0; }
+  a { color: var(--violet-deep); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--violet);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 20px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  header.site-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245, 241, 247, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .nav-mark {
+    font-family: var(--font-display); font-style: italic; font-weight: 500;
+    font-size: 1.1rem; color: var(--ink); text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 22px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    text-decoration: none; color: var(--ink-soft); font-size: 0.88rem;
+    font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); border-color: var(--gold); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    position: relative;
+    padding: 96px 0 84px;
+    overflow: hidden;
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 720px; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    font-weight: 500;
+  }
+  .hero h1 em { font-style: italic; color: var(--violet); font-weight: 400; }
+  .hero .role {
+    margin-top: 18px;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+  }
+  .hero .tags { margin-top: 26px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    color: var(--ink-soft); background: var(--card); border: 1px solid var(--card-border);
+    padding: 6px 12px; border-radius: 100px;
+  }
+  .hero-cta { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-body); font-weight: 600; font-size: 0.9rem;
+    padding: 12px 22px; border-radius: 100px; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer; transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--violet-deep); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--card); }
+
+  /* Hand-drawn constellation motif, signature element */
+  .constellation {
+    position: absolute; top: -40px; right: -60px; width: 620px; height: 620px;
+    z-index: 1; opacity: 0.9; pointer-events: none;
+  }
+  @media (max-width: 780px) {
+    .constellation { width: 380px; height: 380px; right: -120px; top: -20px; opacity: 0.6; }
+  }
+  .constellation .line { stroke: var(--violet); stroke-width: 1; opacity: 0.45; fill: none; stroke-dasharray: 3 4; }
+  .constellation .star { fill: var(--gold); }
+  .constellation .star.small { fill: var(--sky); }
+
+  /* ============================================================
+     SECTION SCAFFOLDING
+     ============================================================ */
+  section { padding: 76px 0; }
+  section.alt { background: var(--paper-warm); }
+  section.alt + section.alt { padding-top: 0; }
+  .section-head { max-width: 620px; margin-bottom: 44px; }
+  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+  .section-head .lede { margin-top: 12px; color: var(--ink-soft); font-size: 1.02rem; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ============================================================
+     ABOUT
+     ============================================================ */
+  .about-grid {
+    display: grid; grid-template-columns: 200px 1fr; gap: 44px; align-items: start;
+  }
+  @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .photo-placeholder {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--sky));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-style: italic; font-size: 2.6rem;
+    color: var(--paper); border: 4px solid var(--card);
+    box-shadow: 0 8px 28px rgba(38, 32, 66, 0.14);
+  }
+  .about-text p + p { margin-top: 14px; }
+  .about-text .bio-placeholder {
+    color: var(--ink-soft); font-style: italic;
+    border-left: 2px solid var(--gold); padding-left: 14px;
+  }
+
+  .fact-list { margin-top: 26px; display: grid; gap: 10px; }
+  .fact-list .fact { display: flex; gap: 10px; font-size: 0.92rem; }
+  .fact-list .fact dt { font-family: var(--font-mono); color: var(--violet); min-width: 108px; flex-shrink: 0; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 2px; }
+  .fact-list .fact dd { margin: 0; color: var(--ink); }
+
+  /* ============================================================
+     RESEARCH, field-note cards
+     ============================================================ */
+  .field-notes { display: grid; gap: 20px; }
+  .field-note {
+    background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius);
+    padding: 28px 30px; display: grid; grid-template-columns: 160px 1fr; gap: 26px;
+  }
+  @media (max-width: 680px) { .field-note { grid-template-columns: 1fr; } }
+  .field-note .fn-meta { font-family: var(--font-mono); font-size: 0.76rem; color: var(--violet); }
+  .field-note .fn-meta .date { display: block; color: var(--ink-soft); margin-top: 6px; }
+  .two-col .field-note { grid-template-columns: 1fr; gap: 6px; padding: 22px 24px; }
+  .two-col .field-notes { gap: 16px; }
+  .field-note h3 { font-size: 1.15rem; font-weight: 600; font-family: var(--font-body); }
+  .field-note .fn-place { color: var(--ink-soft); font-size: 0.88rem; margin-top: 3px; }
+  .field-note ul { margin: 14px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.94rem; }
+  .field-note li + li { margin-top: 6px; }
+
+  /* ============================================================
+     HONORS strip
+     ============================================================ */
+  .honors-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px;
+  }
+  .honor-card {
+    background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+    padding: 18px 20px;
+  }
+  .honor-card .yr { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.04em; }
+  .honor-card p { margin-top: 6px; font-size: 0.92rem; color: var(--ink); }
+
+  /* ============================================================
+     OUTREACH / TALKS / LEADERSHIP
+     ============================================================ */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 780px) { .two-col { grid-template-columns: 1fr; } }
+  .subhead { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 16px; }
+  .timeline-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-item .ti-title { font-weight: 600; font-size: 0.96rem; }
+  .timeline-item .ti-meta { font-size: 0.84rem; color: var(--ink-soft); margin-top: 3px; }
+
+  .role-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .role-pill {
+    font-size: 0.82rem; background: var(--paper); border: 1px solid var(--card-border);
+    padding: 8px 14px; border-radius: 100px; color: var(--ink);
+  }
+
+  /* ============================================================
+     SKILLS
+     ============================================================ */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+  .skill-block h4 { font-family: var(--font-body); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--violet); font-weight: 600; margin-bottom: 12px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-family: var(--font-mono); font-size: 0.78rem; background: var(--card); border: 1px solid var(--card-border); padding: 6px 12px; border-radius: 6px; }
+
+  /* ============================================================
+     ART
+     ============================================================ */
+  .art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .art-placeholder {
+    aspect-ratio: 4 / 5; border-radius: var(--radius-sm);
+    border: 1.5px dashed var(--card-border); background: var(--card);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; padding: 20px; text-align: center;
+  }
+  .art-placeholder .plus {
+    font-family: var(--font-display); font-style: italic; font-size: 1.8rem; color: var(--sky);
+  }
+  .art-placeholder span { font-size: 0.82rem; color: var(--ink-soft); }
+  .art-note { margin-top: 22px; color: var(--ink-soft); font-size: 0.92rem; max-width: 560px; }
+
+  /* ============================================================
+     PUBLICATIONS
+     ============================================================ */
+  .stub-card {
+    background: var(--card); border: 1px dashed var(--card-border); border-radius: var(--radius);
+    padding: 34px 32px; text-align: left; max-width: 620px;
+  }
+  .stub-card h3 { font-size: 1.1rem; font-weight: 600; font-family: var(--font-body); }
+  .stub-card p { margin-top: 10px; color: var(--ink-soft); font-size: 0.94rem; }
+
+  /* ============================================================
+     CONTACT / FOOTER
+     ============================================================ */
+  .contact-inner { display: flex; flex-wrap: wrap; gap: 44px; justify-content: space-between; align-items: flex-end; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+  .contact-links a {
+    text-decoration: none; font-size: 0.88rem; font-weight: 500;
+    background: var(--card); border: 1px solid var(--card-border); padding: 10px 18px; border-radius: 100px; color: var(--ink);
+    transition: border-color 0.2s ease;
+  }
+  .contact-links a:hover { border-color: var(--violet); }
+
+  footer { padding: 30px 0 50px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  footer p { font-size: 0.8rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-mark">Mari de Aguiar Féo</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#outreach">Outreach</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <svg class="constellation" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="line" d="M 480 60 L 540 140 L 500 230 L 560 300 L 470 340" />
+    <path class="line" d="M 500 230 L 420 260 L 380 180" />
+    <path class="line" d="M 470 340 L 400 400 L 430 480" />
+    <circle class="star" cx="480" cy="60" r="3.5" />
+    <circle class="star small" cx="540" cy="140" r="2.5" />
+    <circle class="star" cx="500" cy="230" r="4" />
+    <circle class="star small" cx="420" cy="260" r="2" />
+    <circle class="star small" cx="380" cy="180" r="2.2" />
+    <circle class="star" cx="560" cy="300" r="3" />
+    <circle class="star" cx="470" cy="340" r="3.5" />
+    <circle class="star small" cx="400" cy="400" r="2.4" />
+    <circle class="star" cx="430" cy="480" r="3" />
+  </svg>
+  <div class="wrap hero-inner">
+    <h1>Mariana <em>“Mari”</em><br>de Aguiar Féo</h1>
+    <p class="role">Physics &amp; Studio Art student at Carleton College.</p>
+    <div class="tags">
+      <span class="tag">ASTROPHYSICS</span>
+      <span class="tag">OBSERVATIONAL ASTRONOMY</span>
+      <span class="tag">STUDIO ART</span>
+      <span class="tag">SCI-COMM</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#research" class="btn btn-primary">See my research →</a>
+      <a href="Mari_de_Aguiar_Feo_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">About</div>
+      <h2>A little about me</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="photo-placeholder" aria-hidden="true">MF</div>
+      <!-- ↑ swap for <img src="your-photo.jpg" alt="Mari de Aguiar Féo" style="width:180px;height:180px;border-radius:50%;object-fit:cover;"> -->
+      <div class="about-text">
+        <p class="bio-placeholder">[Add bio]</p>
+
+        <dl class="fact-list">
+          <div class="fact"><dt>Studying</dt><dd>Bachelor of Arts, Physics &amp; Studio Art, Carleton College, Northfield, MN (Class of 2028)</dd></div>
+          <div class="fact"><dt>Scholarships</dt><dd>Kellogg Scholar: a fully-funded, selective need &amp; merit-based scholarship for international students · TeamUp Together Scholarship recipient (2025)</dd></div>
+          <div class="fact"><dt>Coursework</dt><dd>Astrophysics I · Observational Astronomy · Electricity &amp; Magnetism · Analytical &amp; Computational Mechanics · Atomic &amp; Nuclear Physics · ODEs · Linear Algebra · Thermodynamics &amp; Statistical Mechanics (in progress)</dd></div>
+          <div class="fact"><dt>Languages</dt><dd>English &amp; Portuguese (fluent) · Spanish (upper-intermediate) · Italian (intermediate) · Arabic (elementary)</dd></div>
+          <div class="fact"><dt>Based in</dt><dd>Northfield, Minnesota</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEARCH ===== -->
+<section id="research" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Research</div>
+      <h2>Current &amp; recent work</h2>
+      <p class="lede">Observational astrophysics, stellar populations, and science education.</p>
+    </div>
+
+    <div class="field-notes reveal">
+      <div class="field-note">
+        <div class="fn-meta">CIERA · Northwestern University<span class="date">Jun 2026–present</span></div>
+        <div>
+          <h3>Astrophysics Research Assistant</h3>
+          <p class="fn-place">Under Dr. Kilpatrick · Evanston, IL</p>
+          <ul>
+            <li>Retrieve and calibrate data from MAST; perform photometry and HST image quality checks</li>
+            <li>Contribute systematic measurements across samples of Type II supernovae and their host environments, summarized against the existing literature</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <div class="fn-meta">Chemodynamics of the Milky Way<span class="date">Jan 2025–present</span></div>
+        <div>
+          <h3>Student Research Assistant</h3>
+          <p class="fn-place">Under Dr. Andreia Carillo · Carleton College</p>
+          <ul>
+            <li>Use low-resolution spectra to analyze kinematics and chemical dynamics of red clump stars in the Milky Way's halo-disk region, toward stellar population classification</li>
+            <li>Re-run data reduction with CURE for VIRUS-W and resolve existing dataset issues</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <div class="fn-meta">Physics Education Research<span class="date">Sept 2025–present</span></div>
+        <div>
+          <h3>Student Research Assistant</h3>
+          <p class="fn-place">Under Dr. Marty Baylor · Carleton College</p>
+          <ul>
+            <li>Helping plan a summer science program for the Puerta Abierta project in Santiago de Atitlán, Guatemala, designing a two-day astronomy component for ages 7–10</li>
+            <li>Surveying available Spanish-language children's teaching materials in physics and astronomy</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <div class="fn-meta">Physics &amp; Astronomy Dept.<span class="date">Apr 2025–present</span></div>
+        <div>
+          <h3>Laboratory &amp; Astronomy Assistant</h3>
+          <p class="fn-place">Carleton College</p>
+          <ul>
+            <li>Astronomy Assistant for ASTR113: Observational Astronomy. Assembled 16.2" and 8" telescopes and guided 22 students through observation and image rendering in AstroImageJ and GIMP; troubleshot equatorial alignment on a new telescope set</li>
+            <li>Laboratory Assistant, Mechanics &amp; Relativity: guided and evaluated 18 students</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <div class="fn-meta">Physics &amp; Astronomy Dept.<span class="date">Jan 2025–present</span></div>
+        <div>
+          <h3>Problem Solving Facilitator</h3>
+          <p class="fn-place">Carleton College</p>
+          <ul>
+            <li>Assist students across departmental classes with problem sets and conceptual understanding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Recognition</div>
+      <h2>Honors &amp; awards</h2>
+    </div>
+    <div class="honors-grid reveal">
+      <div class="honor-card"><span class="yr">2026</span><p>Student Internships Endowed Fund, for summer 2026 research</p></div>
+      <div class="honor-card"><span class="yr">2026</span><p>Finalist, top 15% of 9,200, International Astronomy &amp; Astrophysics Competition (IAAC)</p></div>
+      <div class="honor-card"><span class="yr">2026</span><p>Honour for Exceptional Submission, IAAC Qualification Round</p></div>
+      <div class="honor-card"><span class="yr">2025</span><p>Bronze Honour, top 15% of 12,300, IAAC</p></div>
+      <div class="honor-card"><span class="yr">2021–22</span><p>Silver &amp; Bronze Medal, Brazilian Astronomy Olympiad (OBA)</p></div>
+      <div class="honor-card"><span class="yr">2021–22</span><p>2 Gold, 5 Silver, World Mathematical Team Championship, top 5% worldwide</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Publications</div>
+      <h2>Publications</h2>
+    </div>
+    <div class="honors-grid reveal">
+      <div class="honor-card"><p>Nothing published yet. Check back as current research projects move toward write-up.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUTREACH / TALKS / LEADERSHIP ===== -->
+<section id="outreach" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Outreach &amp; Service</div>
+      <h2>Talks, conferences &amp; leadership</h2>
+      <p class="lede">Most of my time outside research goes into making physics and astronomy more accessible through talks, mentorship, and community organizing.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="subhead">Leadership &amp; outreach roles</div>
+      <div class="field-notes">
+        <div class="field-note">
+          <div class="fn-meta">Society for Physics Students, Carleton<span class="date">Jun 2025–present</span></div>
+          <div>
+            <h3>VP-elect ('26–'27), Secretary ('25–'26)</h3>
+            <ul>
+              <li>Implemented a peer-mentorship program in the Physics and Astronomy department, reaching a first-year cohort of 20 mentors and 39 mentees</li>
+              <li>Recorded notes, organized events, and handled other procedural tasks for the chapter</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">American Physical Society<span class="date">Jun 2026–present</span></div>
+          <div>
+            <h3>APS Advocacy Champion</h3>
+            <ul>
+              <li>Work with policymakers toward better science funding and structure, meeting personally to discuss issues</li>
+              <li>Participate in policy briefings from the APS Office of Government Affairs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">American Physical Society<span class="date">Apr 2025–Jun 2026</span></div>
+          <div>
+            <h3>APS Student Ambassador</h3>
+            <ul>
+              <li>Selected and funded to attend the APS Annual Leadership Meeting, participating in training and leadership development</li>
+              <li>Ideated and organized 4 events (~60 attendees) to promote APS at Carleton, serving as a resource to student members</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">APS-IDEA Team, Carleton<span class="date">Feb 2025–present</span></div>
+          <div>
+            <h3>Student Leader ('26–present), Student Member ('25)</h3>
+            <ul>
+              <li>Organized events, team meetings, and procedures, maintaining organization and communication among members</li>
+              <li>Ideated and organized 3 events to discuss climate and inclusion in the department (19, 22, and 28 attendees respectively)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">COSMOS Astronomy Club, Carleton<span class="date">May 2025–present</span></div>
+          <div>
+            <h3>Co-leader</h3>
+            <ul>
+              <li>Host regular observation and imaging meetings at Goodsell Observatory using the 16.2" John Brashear refractor, 8" Meade Schmidt-Cassegrain LX200s, and Celestron telescopes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">DarkSky International<span class="date">Jun–Aug 2025</span></div>
+          <div>
+            <h3>Summer Intern</h3>
+            <ul>
+              <li>Created a Global Sky Quality Repository project to unify sky quality data collected worldwide</li>
+              <li>Mapped light pollution on Carleton's campus with over 10 hours of SQM data collection</li>
+              <li>Managed Slack community interactions, creating biweekly prompts and driving community engagement</li>
+              <li>Translated and assembled 7+ advocate outreach materials in Portuguese, Spanish, English, and Arabic</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field-note">
+          <div class="fn-meta">IAU Brazil, National Outreach Coordination<span class="date">Apr 2023–Sept 2024</span></div>
+          <div>
+            <h3>Social Media Manager</h3>
+            <ul>
+              <li>Managed the office's online presence, increasing page impressions by 230% and reaching 900+ people daily</li>
+              <li>Featured in the "Women and Girls in Astronomy" project by the IAU's Union Office of Astronomy Outreach</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:48px;">
+      <div class="subhead">Conferences &amp; talks</div>
+      <div class="timeline-item">
+        <div class="ti-title">APS Annual Leadership Meeting, Ambassador</div>
+        <div class="ti-meta">American Physical Society · 2026</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ti-title">Carleton &amp; St. Olaf Joint Physics and Astronomy Symposium, Poster</div>
+        <div class="ti-meta">2025</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ti-title">Under OneSky Conference, Americas Panel, Panel Host</div>
+        <div class="ti-meta">2024</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ti-title">Under OneSky Conference, Americas Panel, Speaker</div>
+        <div class="ti-meta">2023</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ti-title">"Cultural astronomy: how science has impacted us since ancient times"</div>
+        <div class="ti-meta">TEDxYouth, Speaker · 2022</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ti-title">ICTP South America Institute for Fundamental Research, Summer School, Quantum track</div>
+        <div class="ti-meta">2021</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OTHER INTERESTS ===== -->
+<section id="interests" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Beyond the lab</div>
+      <h2>Other interests</h2>
+      <p class="lede">In the past I've also worked as an English teacher at a non profit organization called Cidadão Pró Mundo. This was an incredible life changing experience and it taught me how much I love teaching.</p>
+    </div>
+    <div class="field-notes reveal">
+      <div class="field-note">
+        <div class="fn-meta">Cidadão Pró-Mundo, Rio de Janeiro<span class="date">Jun 2021–Aug 2024</span></div>
+        <div>
+          <h3>Pedagogical Coordinator ('23–'24), Lead Teacher ('22–'24), Teacher ('21)</h3>
+          <ul>
+            <li>Oversaw academic matters affecting 183 students, including class placement, academic progress, and graduation requirements</li>
+            <li>Led 2 teams of 6 teachers and taught 50+ classes with a 45% grade increase; prepared 20 students for B1 and B2 certification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Toolkit</div>
+      <h2>Skills</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-block">
+        <h4>Scientific computing</h4>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">Astropy</span><span class="chip">NumPy</span>
+          <span class="chip">SciPy</span><span class="chip">Jupyter</span><span class="chip">Matplotlib</span>
+          <span class="chip">Mathematica</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h4>Observation &amp; imaging</h4>
+        <div class="chip-row">
+          <span class="chip">AstroImageJ</span><span class="chip">GIMP</span>
+          <span class="chip">Astrometrica</span><span class="chip">Dolphot</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <h4>Writing &amp; docs</h4>
+        <div class="chip-row">
+          <span class="chip">LaTeX</span><span class="chip">Microsoft Office</span><span class="chip">Google Workspace</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ART ===== -->
+<section id="art" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Studio Art</div>
+      <h2>Art</h2>
+      <p class="lede">The other half of my major. Observation shows up in both my telescope time and my sketchbook.</p>
+    </div>
+    <div class="art-grid reveal">
+      <div class="art-placeholder"><span class="plus">+</span><span>[Artwork title, medium, year]</span></div>
+      <div class="art-placeholder"><span class="plus">+</span><span>[Artwork title, medium, year]</span></div>
+      <div class="art-placeholder"><span class="plus">+</span><span>[Artwork title, medium, year]</span></div>
+      <div class="art-placeholder"><span class="plus">+</span><span>[Artwork title, medium, year]</span></div>
+    </div>
+    <p class="art-note reveal">[Replace these placeholders with photos of your work: paintings, drawings, astrophotography, whatever fits.]</p>
+
+    <div class="subhead reveal" style="margin-top:48px;">Art awards &amp; experience</div>
+    <div class="honors-grid reveal">
+      <div class="honor-card"><span class="yr">2026</span><p>Hyslop Warnholtz Award, for summer art classes</p></div>
+      <div class="art-placeholder" style="aspect-ratio:auto; padding:18px 20px;"><span class="plus">+</span><span>[Add another art award, show, or experience]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-inner reveal">
+      <div>
+        <p class="lede" style="color:var(--ink-soft); max-width:480px;">Open to conversations about research, outreach, or the intersection of the two. Reach out by email, or find me through the links below.</p>
+        <div class="contact-links">
+          <a href="mailto:deaguiarfeom@carleton.edu">deaguiarfeom@carleton.edu</a>
+          <a href="#" target="_blank" rel="noopener">[GitHub →]</a>
+          <a href="#" target="_blank" rel="noopener">[LinkedIn →]</a>
+          <a href="#" target="_blank" rel="noopener">[Instagram, art]</a>
+          <a href="#" target="_blank" rel="noopener">[Google Scholar →]</a>
+        </div>
+      </div>
+      <a href="Mari_de_Aguiar_Feo_CV.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="yr"></span> Mari de Aguiar Féo</p>
+    <p>Built with care and star dust · Northfield, MN</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  // Nav active-state on scroll
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    let current = sections[0];
+    sections.forEach(sec => { if (sec.getBoundingClientRect().top - 100 <= 0) current = sec; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  };
+  document.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+</script>
+
+</body>
+</html>
