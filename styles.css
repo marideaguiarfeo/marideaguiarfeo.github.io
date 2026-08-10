@@ -149,6 +149,18 @@ header.site-nav {
 .constellation .star { fill: var(--gold); }
 .constellation .star.small { fill: var(--sky); }
 
+/* Hero avatar + name row, and the three big nav pills underneath */
+.hero-top { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.hero-avatar { width: 128px; height: 128px; font-size: 1.7rem; flex-shrink: 0; }
+.hero-heading h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; }
+.hero-blurb {
+  margin-top: 26px; max-width: 560px;
+  color: var(--ink-soft); font-style: italic;
+  border-left: 2px solid var(--gold); padding-left: 14px;
+}
+.hero-pill-nav { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-big { padding: 16px 34px; font-size: 0.95rem; letter-spacing: 0.01em; }
+
 /* Compact page header, used at the top of secondary pages instead of the full hero */
 .page-header { padding: 64px 0 8px; }
 .page-header h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); }
@@ -170,9 +182,23 @@ section.alt + section.alt { padding-top: 0; }
    ABOUT
    ============================================================ */
 .about-grid {
-  display: grid; grid-template-columns: 200px 1fr; gap: 44px; align-items: start;
+  display: grid; grid-template-columns: 1fr 260px; gap: 48px; align-items: start;
 }
-@media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; } }
+
+.trajectory-blurb {
+  font-family: var(--font-display); font-weight: 500; font-style: italic;
+  font-size: 1.3rem; line-height: 1.4; color: var(--violet-deep);
+  max-width: 480px; margin-bottom: 6px;
+}
+
+/* Stack of photo placeholders alongside the About text, right-hand column */
+.about-photos { display: flex; flex-direction: column; gap: 18px; }
+.about-photos .art-placeholder { aspect-ratio: 4 / 3; padding: 14px; }
+@media (max-width: 780px) {
+  .about-photos { flex-direction: row; flex-wrap: wrap; }
+  .about-photos .art-placeholder { flex: 1 1 200px; }
+}
 
 .photo-placeholder {
   width: 180px; height: 180px; border-radius: 50%;
@@ -305,6 +331,9 @@ section.alt + section.alt { padding-top: 0; }
 }
 .art-placeholder span { font-size: 0.82rem; color: var(--ink-soft); }
 .art-note { margin-top: 22px; color: var(--ink-soft); font-size: 0.92rem; max-width: 560px; }
+
+/* Art page: Awards (short bubbles) vs Experience (longer CV-style bubbles) */
+.art-recognition-block + .art-recognition-block { margin-top: 40px; }
 
 /* Art photo cards with title / year / medium / location / description, used on the 3 Art subsection pages */
 .art-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
