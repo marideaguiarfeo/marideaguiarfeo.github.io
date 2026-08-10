@@ -46,9 +46,9 @@
     <circle class="star" cx="430" cy="480" r="3" />
   </svg>
 
-  <div class="wrap hero-inner" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important; text-align: left !important; gap: 2.5rem !important;">
+  <div class="wrap hero-inner" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important; text-align: left !important; gap: 2.5rem !important; max-width: 1050px !important; margin: 0 auto !important;">
     
-    <!-- Avatar Container (Left Side) -->
+    <!-- Avatar Container -->
     <div class="hero-avatar-wrap" style="flex-shrink: 0 !important;">
       <img 
         src="IMG_6428 (2).PNG" 
@@ -57,13 +57,20 @@
       >
     </div>
 
-    <!-- Text Block (Right Side) -->
-    <div class="hero-text-content" style="max-width: 650px;">
-      <h1>Mariana <em>“Mari”</em><br>de Aguiar Féo</h1>
-      <p class="role">Physics &amp; Studio Art student at Carleton College.</p>
-      <p class="hero-blurb">(Add a short about-me blurb here)</p>
+    <!-- Text Block (Set to optimal 650px) -->
+    <div class="hero-text-content" style="max-width: 650px !important; flex-grow: 1 !important;">
+      <h1 style="font-size: 2.75rem; line-height: 1.15; margin: 0;">
+        Mariana <em>“Mari”</em><br>de Aguiar Féo
+      </h1>
+      <p class="role" style="font-size: 1.1rem; margin-top: 0.5rem; color: #555;">
+        Physics &amp; Studio Art student at Carleton College.
+      </p>
+      <p class="hero-blurb" style="margin-top: 0.5rem;">
+        (Add a short about-me blurb here)
+      </p>
       
-      <div class="hero-pill-nav" style="display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-start;">
+      <!-- Single line pill buttons -->
+      <div class="hero-pill-nav" style="display: flex !important; flex-wrap: nowrap !important; gap: 0.75rem !important; margin-top: 1.5rem !important; justify-content: flex-start !important;">
         <a href="astrophysics.html" class="btn btn-primary btn-big">Astrophysics</a>
         <a href="art.html" class="btn btn-primary btn-big">Art</a>
         <a href="#contact" class="btn btn-primary btn-big">Contact</a>
@@ -72,7 +79,6 @@
 
   </div>
 </section>
-  
 <!-- ===== ABOUT ===== -->
 <section id="about">
   <div class="wrap">
