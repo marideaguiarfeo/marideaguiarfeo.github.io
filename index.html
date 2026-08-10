@@ -28,7 +28,7 @@
 <!-- ===== PROFILE HEADER BANNER ===== -->
 <div class="profile-banner reveal" aria-hidden="true"></div>
 
-<!-- ===== HERO SECTION ===== -->
+<!-- ===== PROFILE SECTION ===== -->
 <section class="hero" id="home">
   <!-- Constellation Background SVG -->
   <svg class="constellation" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -46,23 +46,30 @@
     <circle class="star" cx="430" cy="480" r="3" />
   </svg>
 
-  <div class="wrap hero-inner">
-    <!-- Avatar (Left side) -->
-    <div class="hero-avatar-wrap">
-      <img src="IMG_6428 (2).PNG" alt="Mari de Aguiar Féo" class="hero-avatar">
+  <div class="wrap hero-inner" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important; text-align: left !important; gap: 2.5rem !important;">
+    
+    <!-- Avatar Container (Left Side) -->
+    <div class="hero-avatar-wrap" style="flex-shrink: 0 !important;">
+      <img 
+        src="IMG_6428 (2).PNG" 
+        alt="Mari de Aguiar Féo" 
+        style="width: 170px !important; height: 170px !important; border-radius: 50% !important; object-fit: cover !important; display: block !important;"
+      >
     </div>
 
-    <!-- Content Block (Right side) -->
-    <div class="hero-text-content">
+    <!-- Text Block (Right Side) -->
+    <div class="hero-text-content" style="max-width: 550px;">
       <h1>Mariana <em>“Mari”</em><br>de Aguiar Féo</h1>
       <p class="role">Physics &amp; Studio Art student at Carleton College.</p>
       <p class="hero-blurb">(Add a short about-me blurb here)</p>
-      <div class="hero-pill-nav">
+      
+      <div class="hero-pill-nav" style="display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-start;">
         <a href="astrophysics.html" class="btn btn-primary btn-big">Astrophysics</a>
         <a href="art.html" class="btn btn-primary btn-big">Art</a>
         <a href="#contact" class="btn btn-primary btn-big">Contact</a>
       </div>
     </div>
+
   </div>
 </section>
   
