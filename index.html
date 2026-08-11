@@ -28,11 +28,10 @@
 <!--  PROFILE HEADER BANNER  -->
 <div class="profile-banner reveal" aria-hidden="true"></div>
   
-<!--  PROFILE SECTION  -->
-<section class="hero" id="home" style="position: relative; overflow: hidden; padding: 2rem 1rem; width: 100%; box-sizing: border-box;">
-  
+<!-- PROFILE SECTION -->
+<section class="hero" id="home">
   <!-- Constellation Background SVG -->
-  <svg class="constellation" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position: absolute; right: 0; top: 0; max-width: 50%; pointer-events: none;">
+  <svg class="constellation" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path class="line" d="M 480 60 L 540 140 L 500 230 L 560 300 L 470 340" />
     <path class="line" d="M 500 230 L 420 260 L 380 180" />
     <path class="line" d="M 470 340 L 400 400 L 430 480" />
@@ -47,36 +46,23 @@
     <circle class="star" cx="430" cy="480" r="3" />
   </svg>
 
-  <div class="wrap hero-inner" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important; text-align: left !important; gap: clamp(0.5rem, 2vw, 2.5rem) !important; width: 100% !important; max-width: 1000px !important; margin: 0 auto !important; box-sizing: border-box !important;">
+  <div class="wrap hero-inner">
     
-    <!-- Avatar (Auto-scales with clamp from 80px on phone to 220px on desktop) -->
-    <div class="hero-avatar-wrap" style="flex-shrink: 0 !important;">
-      <img 
-        src="IMG_6428 (2).PNG" 
-        alt="Mari de Aguiar Féo" 
-        style="width: clamp(80px, 20vw, 220px) !important; height: clamp(80px, 20vw, 220px) !important; border-radius: 50% !important; object-fit: cover !important; display: block !important;"
-      >
+    <!-- Avatar -->
+    <div class="hero-avatar-wrap">
+      <img src="IMG_6428 (2).PNG" alt="Mari de Aguiar Féo" class="hero-avatar">
     </div>
 
-    <!-- Text Block (min-width: 0 prevents flex child blowout) -->
-    <div class="hero-text-content" style="flex: 1 1 auto !important; min-width: 0 !important; max-width: 650px !important;">
-      <h1 style="font-size: clamp(1.2rem, 4vw, 2.75rem) !important; line-height: 1.15 !important; margin: 0 !important; word-break: normal !important;">
-        Mariana <em>“Mari”</em><br>de Aguiar Féo
-      </h1>
+    <!-- Text Container -->
+    <div class="hero-text-content">
+      <h1>Mariana <em>“Mari”</em><br>de Aguiar Féo</h1>
+      <p class="role">Physics &amp; Studio Art student at Carleton College.</p>
+      <p class="hero-blurb">(Add a short about-me blurb here)</p>
       
-      <p class="role" style="font-size: clamp(0.75rem, 2vw, 1.1rem) !important; margin-top: 0.4rem !important;">
-        Physics &amp; Studio Art student at Carleton College.
-      </p>
-      
-      <p class="hero-blurb" style="font-size: clamp(0.7rem, 1.8vw, 1rem) !important; margin-top: 0.3rem !important;">
-        (Add a short about-me blurb here)
-      </p>
-      
-      <!-- Nav Buttons (Shrinks smoothly without wrapping or overflowing) -->
-      <div class="hero-pill-nav" style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: clamp(0.2rem, 1vw, 0.75rem) !important; margin-top: 1rem !important; justify-content: flex-start !important; width: 100% !important;">
-        <a href="astrophysics.html" class="btn btn-primary btn-big" style="padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.4rem, 1.5vw, 1.2rem) !important; font-size: clamp(0.65rem, 1.8vw, 1rem) !important; white-space: nowrap !important;">Astrophysics</a>
-        <a href="art.html" class="btn btn-primary btn-big" style="padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.4rem, 1.5vw, 1.2rem) !important; font-size: clamp(0.65rem, 1.8vw, 1rem) !important; white-space: nowrap !important;">Art</a>
-        <a href="#contact" class="btn btn-primary btn-big" style="padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.4rem, 1.5vw, 1.2rem) !important; font-size: clamp(0.65rem, 1.8vw, 1rem) !important; white-space: nowrap !important;">Contact</a>
+      <div class="hero-pill-nav">
+        <a href="astrophysics.html" class="btn btn-primary btn-big">Astrophysics</a>
+        <a href="art.html" class="btn btn-primary btn-big">Art</a>
+        <a href="#contact" class="btn btn-primary btn-big">Contact</a>
       </div>
     </div>
 
