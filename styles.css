@@ -385,72 +385,99 @@ footer p { font-size: 0.8rem; color: var(--ink-soft); }
 .footer-contact a { color: var(--ink-soft); text-decoration: none; font-size: 0.78rem; border-bottom: 1px solid transparent; }
 .footer-contact a:hover { color: var(--ink); border-color: var(--gold); }
 
-/*  ULTRA-FIT MOBILE LAYOUT  */
+
+/* +
+   PROFILE DESKTOP STYLES
+    */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+}
+
+.hero-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: left !important;
+  gap: 3rem !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+.hero-avatar-wrap {
+  flex-shrink: 0 !important;
+}
+
+.hero-avatar {
+  width: 220px !important;
+  height: 220px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.hero-text-content {
+  width: 650px !important;
+  max-width: 100% !important;
+}
+
+.hero-text-content h1 {
+  font-size: 2.8rem !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+}
+
+.hero-pill-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 0.75rem !important;
+  margin-top: 1.5rem !important;
+}
+
+/* 
+   PROFILE MOBILE STYLES (Fits Phones Side-by-Side)
+    */
 @media screen and (max-width: 768px) {
-  
-  /* Prevent horizontal overflow on the whole hero block */
   .hero {
-    overflow-x: hidden !important;
     padding: 2rem 0.75rem !important;
   }
 
-  /* Compact side-by-side flex container */
   .hero-inner {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.75rem !important;          /* Reduced gap between image and text */
-    width: 100% !important;
-    max-width: 100% !important;
+    gap: 1rem !important; /* Smaller gap on phones */
     padding: 0 !important;
-    box-sizing: border-box !important;
   }
 
-  /* Scale image dynamically based on screen width */
   .hero-avatar {
-    width: clamp(75px, 22vw, 100px) !important;
-    height: clamp(75px, 22vw, 100px) !important;
-    flex-shrink: 0 !important;
+    width: 120px !important; /* Scaled down avatar for mobile */
+    height: 120px !important;
   }
 
-  /* Allow text box to take up remaining space smoothly */
   .hero-text-content {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;          /* Crucial: lets text shrink inside flexbox */
-    width: auto !important;
+    min-width: 0 !important; /* Prevents overflow clipping */
   }
 
-  /* Responsive title typography */
   .hero-text-content h1 {
-    font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
-    line-height: 1.1 !important;
-    word-break: normal !important;
+    font-size: 1.5rem !important; /* Clean font size for phone screens */
   }
 
   .hero-text-content .role {
-    font-size: clamp(0.75rem, 3vw, 0.88rem) !important;
-    margin-top: 0.25rem !important;
+    font-size: 0.88rem !important;
   }
 
   .hero-text-content .hero-blurb {
-    font-size: clamp(0.7rem, 2.8vw, 0.8rem) !important;
-    margin-top: 0.25rem !important;
+    font-size: 0.8rem !important;
   }
 
-  /* Ultra-compact nav pills to fit every screen width */
   .hero-pill-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 0.25rem !important;          /* Tight gap between buttons */
-    margin-top: 0.5rem !important;
-    width: 100% !important;
+    gap: 0.35rem !important;
+    margin-top: 0.75rem !important;
   }
 
   .hero-pill-nav .btn {
-    padding: 0.35rem 0.5rem !important; /* Smaller button padding */
-    font-size: clamp(0.68rem, 2.5vw, 0.78rem) !important;
-    white-space: nowrap !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.75rem !important;
   }
 }
